@@ -25,6 +25,15 @@ class Favorites extends Component {
     }
 
     render() { 
+        let isValid;
+        if (this.state.listName  == ""){
+          isValid =true
+        }
+        else {
+          isValid =false
+          
+
+        }
         return (
             <div className="favorites">
                 <input 
@@ -39,14 +48,16 @@ class Favorites extends Component {
                             
                             {item.Title} ({item.Year})
                             <button 
+                            
                                 className="favorites__delete"
                                 onClick={() => this.props.removeMovieFromFavorites(item.imdbID)}>
                                     x
+                                
                             </button>
                             </li>;
                     })}
                 </ul>
-                {!this.state.isClicked ? <button type="button" className="favorites__save" onClick={this.saveListHandler} >Сохранить список</button> 
+                {!this.state.isClicked ? <button type="button" className="favorites__save" onClick={this.saveListHandler} disabled={isValid} >Сохранить список</button> 
                 : <Link to={'/list/' + this.props.listID} target="_blank">Перейти к выбранным фильмам</Link>}
             </div>
         );

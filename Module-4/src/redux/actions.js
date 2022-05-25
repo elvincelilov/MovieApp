@@ -19,6 +19,7 @@ export function fetchMovieQuery(searchLine) {
         }); 
     }
 }
+
 export function addMovieToFavorites(imdbID) {
     return {
         type: 'ADD_MOVIE_TO_FAVORITES',
